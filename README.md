@@ -1,5 +1,8 @@
 # README
 
+
+![Descripción de la imagen](app/assets/images/captura-principal.png)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
