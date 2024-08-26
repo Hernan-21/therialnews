@@ -1,0 +1,23 @@
+<h2>Comentarios</h2>
+
+<%= form_with(model: [ @news, Comment.new ], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Añadir Comentario' %>
+  </div>
+<% end %>
+
+<h3>Lista de Comentarios</h3>
+<% @news.comments.each do |comment| %>
+  <p>
+    <strong><%= comment.user.email %>:</strong>
+    <%= comment.content %>
+    <% if current_user.admin? || comment.user == current_user %>
+      <%= link_to 'Eliminar', [comment.news, comment], method: :delete, data: { confirm: '¿Estás seguro?' } %>
+    <% end %>
+  </p>
+<% end %>
